@@ -1,83 +1,28 @@
-// ===============================
-// SMOOTH SCROLL FOR NAV LINKS
-// ===============================
-document.querySelectorAll("nav a").forEach(link => {
-    link.addEventListener("click", e => {
-        e.preventDefault();
-        const sectionId = link.textContent
-            .toLowerCase()
-            .replace(/\s/g, "");
+// Reveal elements on scroll
+const animatedItems = document.querySelectorAll('.animate-fade, .animate-slide, .animate-up');
 
-        const target = document.querySelector("." + sectionId);
-        if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-        }
-    });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+animatedItems.forEach(item => observer.observe(item));
+
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
 });
 
-// ===============================
-// HERO IMAGE SLIDER
-// ===============================
-const heroImages = [
-    "images/hero.jpg",
-    "images/vegetables.jpg",
-    "images/flowers.jpg"
-];
-
-let heroIndex = 0;
-const heroImg = document.querySelector(".hero-image img");
-
-setInterval(() => {
-    heroIndex = (heroIndex + 1) % heroImages.length;
-    heroImg.style.opacity = 0;
-
-    setTimeout(() => {
-        heroImg.src = heroImages[heroIndex];
-        heroImg.style.opacity = 1;
-    }, 500);
-}, 4000);
-
-// ===============================
-// LEARN MORE BUTTON SCROLL
-// ===============================
-const learnMoreBtn = document.querySelector(".hero-text button");
-const productSection = document.querySelector(".products");
-
-learnMoreBtn.addEventListener("click", () => {
-    productSection.scrollIntoView({ behavior: "smooth" });
+// Button animations or alerts
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.add('active-click');
+    setTimeout(() => btn.classList.remove('active-click'), 300);
+  });
 });
-
-// ===============================
-// BUTTON RIPPLE EFFECT
-// ===============================
-document.querySelectorAll("button").forEach(btn => {
-    btn.addEventListener("mouseenter", () => {
-        btn.style.transform = "scale(1.05)";
-    });
-
-    btn.addEventListener("mouseleave", () => {
-        btn.style.transform = "scale(1)";
-    });
-});
-
-// ===============================
-// SCROLL REVEAL ANIMATION
-// ===============================
-const revealElements = document.querySelectorAll(
-    ".product-card, .facility-card"
-);
-
-const revealOnScroll = () => {
-    const windowHeight = window.innerHeight;
-
-    revealElements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < windowHeight - 100) {
-            el.classList.add("reveal");
-        }
-    });
-};
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
