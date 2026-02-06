@@ -6,81 +6,97 @@
 }
 
 body {
-  background: #f4f1ea;
-  color: #2f3b2f;
+  background: #f7f9f6;
+  color: #222;
+  line-height: 1.6;
 }
 
+/* COMMON */
+
 .container {
-  width: 90%;
   max-width: 1200px;
   margin: auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2d7a2d;
 }
 
 /* HEADER */
 
 .header {
-  background: #f7f3eb;
-  border-bottom: 1px solid #ddd;
+  background: #2d7a2d;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  justify-content: space-between;
 }
 
 .logo h1 {
-  color: #3a5f2d;
+  font-size: 26px;
 }
 
 .logo span {
-  font-size: 12px;
-  color: #7a8b68;
+  font-size: 13px;
+  opacity: 0.9;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .nav-links a {
+  color: white;
   text-decoration: none;
-  color: #3a5f2d;
   font-weight: 500;
 }
 
-/* PRODUCT CATALOG */
-
-.products {
-  padding: 70px 0;
+.nav-links a:hover {
+  text-decoration: underline;
 }
 
-.products h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 36px;
+.contact-info {
+  font-size: 15px;
+}
+
+/* PRODUCTS */
+
+.products {
+  padding: 60px 0;
 }
 
 .catalog {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 40px;
+  display: flex;
+  gap: 30px;
 }
 
 /* SIDE NAV */
 
 .side-nav {
-  background: #fdfbf7;
-  padding: 25px;
+  width: 220px;
+  background: white;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 120px;
+  height: fit-content;
 }
 
 .side-nav h3 {
   margin-bottom: 15px;
-  color: #3a5f2d;
+  color: #2d7a2d;
 }
 
 .side-nav ul {
@@ -92,79 +108,115 @@ body {
 }
 
 .side-nav a {
-  color: #2f3b2f;
   text-decoration: none;
-  font-weight: 500;
+  color: #333;
+  font-size: 15px;
 }
 
 .side-nav a:hover {
-  color: #5a7b3b;
+  color: #2d7a2d;
 }
 
-/* PRODUCT LIST */
+/* PRODUCT CONTENT */
+
+.product-content {
+  flex: 1;
+}
 
 .product-content section {
-  background: #fdfbf7;
+  background: white;
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  border-radius: 14px;
   margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .product-content h3 {
-  color: #3a5f2d;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #2d7a2d;
+  font-size: 22px;
 }
 
 .varieties {
   display: flex;
   gap: 20px;
-  font-weight: 500;
+  flex-wrap: wrap;
 }
 
 .variety-box {
-  background: #e7efdc;
-  padding: 8px 18px;
-  border-radius: 20px;
+  background: #eaf5ea;
+  padding: 18px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #2d7a2d;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.variety-box:hover {
+  background: #2d7a2d;
+  color: white;
+  transform: translateY(-4px);
 }
 
 /* FACILITIES */
 
 .facilities {
-  padding: 60px 0;
-  background: #efe8dd;
+  background: #2d7a2d;
+  color: white;
   text-align: center;
+  padding: 60px 20px;
 }
 
-.facilities h2 {
-  margin-bottom: 15px;
+.facilities p {
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 /* FOOTER */
 
 footer {
-  background: #3a5f2d;
+  background: #1f4f1f;
   color: white;
-  padding: 50px 0 20px;
+  padding: 40px 20px 10px;
 }
 
 .footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-container h4 {
+  margin-bottom: 10px;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 25px;
   font-size: 14px;
-  color: #d7e2c4;
+  opacity: 0.8;
 }
 
 /* RESPONSIVE */
 
-@media(max-width:850px){
-  .catalog{
-    grid-template-columns: 1fr;
+@media (max-width: 900px) {
+  .catalog {
+    flex-direction: column;
+  }
+
+  .side-nav {
+    width: 100%;
+    position: static;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 15px;
   }
 }
